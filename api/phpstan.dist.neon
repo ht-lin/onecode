@@ -1,0 +1,8 @@
+parameters:
+    level: 8
+    paths:
+        - src
+        - tests
+    symfony:
+        # Run "bin/console cache:warmup" first if this file is missing
+        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml

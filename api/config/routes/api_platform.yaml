@@ -1,0 +1,5 @@
+api_platform:
+    resource: .
+    type: api_platform
+    # All business endpoints live under /v1 (SPEC §7); /healthz is a plain controller route
+    prefix: /v1

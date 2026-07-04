@@ -14,6 +14,15 @@ onecode/
 
 前后端与文档同仓：一次提交可同时改动客户端、后端与规格文档。CI 按路径过滤分别触发 `app/**` 与 `api/**` 流水线（见 SPEC §10.3）。
 
+## 后端开发
+
+```bash
+cd api && docker compose up -d --wait
+curl -k https://localhost/healthz   # → {"status":"ok"}
+```
+
+详见 [api/README.md](api/README.md)。
+
 ## 文档入口
 
 - [SPEC.md](SPEC.md) — 技术规格书（产品定位、数据模型、同步协议、部署运维）
