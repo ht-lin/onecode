@@ -1,0 +1,52 @@
+# ===== 通用 =====
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# ===== Flutter (app/) =====
+app/.dart_tool/
+app/.pub-cache/
+app/.pub/
+app/build/
+app/coverage/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+app/**/*.iml
+app/**/*.ipr
+app/**/*.iws
+app/.metadata
+app/**/doc/api/
+app/**/*.g.dart.bak
+
+# Flutter — Android
+app/android/.gradle/
+app/android/local.properties
+app/android/key.properties
+app/android/**/*.keystore
+app/android/**/*.jks
+app/android/app/debug/
+app/android/app/profile/
+app/android/app/release/
+
+# Flutter — iOS
+app/ios/Pods/
+app/ios/.symlinks/
+app/ios/Flutter/Flutter.framework
+app/ios/Flutter/Flutter.podspec
+app/ios/Flutter/ephemeral/
+app/ios/Flutter/flutter_export_environment.sh
+app/ios/ServiceDefinitions.json
+app/ios/Runner/GeneratedPluginRegistrant.*
+app/**/xcuserdata/
+
+# ===== Symfony (api/) =====
+api/vendor/
+api/var/
+api/.env.local
+api/.env.local.php
+api/.env.*.local
+api/.phpunit.cache/
+api/.phpunit.result.cache
+api/.php-cs-fixer.cache
+api/phpstan.cache/
