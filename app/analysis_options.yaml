@@ -1,0 +1,7 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    # 生成代码不参与 lint（仍参与编译解析）
+    - "**/*.g.dart"
+    - "lib/l10n/app_localizations*.dart"

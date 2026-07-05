@@ -1,0 +1,32 @@
+name: onecode
+description: "OneCode – Kartenwallet für Kundenkarten und Gutscheine."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  flutter_riverpod: ^3.3.0
+  riverpod_annotation: ^4.0.0
+  go_router: ^17.0.0
+  # 预声明，本阶段未使用（SPEC §5.3 关键依赖）
+  drift: ^2.34.0 # 本地数据库 → M1-01
+  dio: ^5.10.0 # API client → M2-06
+  flutter_secure_storage: ^10.0.0 # 令牌存储 → M2 登录流
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.15.0
+  riverpod_generator: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true

@@ -14,6 +14,15 @@ onecode/
 
 前后端与文档同仓：一次提交可同时改动客户端、后端与规格文档。CI 按路径过滤分别触发 `app/**` 与 `api/**` 流水线（见 SPEC §10.3）。
 
+## App 开发
+
+```bash
+cd app && flutter pub get
+flutter run   # 需要模拟器/真机
+```
+
+详见 [app/README.md](app/README.md)。
+
 ## 后端开发
 
 ```bash

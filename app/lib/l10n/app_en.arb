@@ -1,0 +1,19 @@
+{
+  "@@locale": "en",
+  "appTitle": "OneCode",
+  "@appTitle": {
+    "description": "Application title, shown in the wallet AppBar and task switcher. Brand name, not translated."
+  },
+  "tabWallet": "Wallet",
+  "@tabWallet": {
+    "description": "Bottom navigation label for the card wallet tab"
+  },
+  "tabFriends": "Friends",
+  "@tabFriends": {
+    "description": "Bottom navigation label for the friends tab"
+  },
+  "tabSettings": "Settings",
+  "@tabSettings": {
+    "description": "Bottom navigation label for the settings tab"
+  }
+}
