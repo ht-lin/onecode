@@ -15,5 +15,145 @@
   "tabSettings": "Settings",
   "@tabSettings": {
     "description": "Bottom navigation label for the settings tab"
+  },
+  "editorTitleNew": "Add card",
+  "@editorTitleNew": {
+    "description": "Card editor page title when creating a new card"
+  },
+  "editorTitleEdit": "Edit card",
+  "@editorTitleEdit": {
+    "description": "Card editor page title when editing an existing card"
+  },
+  "editorCardNotFound": "Card not found",
+  "@editorCardNotFound": {
+    "description": "Shown when the edit route points to a deleted or unknown card id"
+  },
+  "fieldName": "Name",
+  "@fieldName": {
+    "description": "Label of the required card name field, e.g. the store name"
+  },
+  "errorNameRequired": "Please enter a name",
+  "@errorNameRequired": {
+    "description": "Validation error under the name field when it is empty on save"
+  },
+  "fieldCodeValue": "Code value",
+  "@fieldCodeValue": {
+    "description": "Label of the required raw barcode content field"
+  },
+  "errorCodeValueRequired": "Please enter a code value",
+  "@errorCodeValueRequired": {
+    "description": "Validation error under the code value field when it is empty on save"
+  },
+  "fieldCodeFormat": "Code type",
+  "@fieldCodeFormat": {
+    "description": "Label of the barcode format selector (QR Code, EAN-13, …)"
+  },
+  "fieldCardKind": "Card type",
+  "@fieldCardKind": {
+    "description": "Label of the loyalty-card/coupon type selector"
+  },
+  "kindLoyalty": "Loyalty card",
+  "@kindLoyalty": {
+    "description": "Card type option: loyalty/membership card without expiry"
+  },
+  "kindCoupon": "Coupon",
+  "@kindCoupon": {
+    "description": "Card type option: coupon/voucher with optional expiry date"
+  },
+  "fieldExpiry": "Valid until",
+  "@fieldExpiry": {
+    "description": "Label of the coupon expiry date field"
+  },
+  "expiryNotSet": "No expiry date",
+  "@expiryNotSet": {
+    "description": "Placeholder in the expiry field while no date is selected"
+  },
+  "removeExpiry": "Remove expiry date",
+  "@removeExpiry": {
+    "description": "Tooltip of the clear button next to a selected expiry date"
+  },
+  "fieldNote": "Note",
+  "@fieldNote": {
+    "description": "Label of the optional multi-line note field (PIN hints, conditions, …)"
+  },
+  "fieldColor": "Card color",
+  "@fieldColor": {
+    "description": "Label above the card face color palette"
+  },
+  "customColor": "Custom color",
+  "@customColor": {
+    "description": "Label of the palette entry and dialog title for picking a custom card color"
+  },
+  "colorHue": "Hue",
+  "@colorHue": {
+    "description": "Slider label in the custom color dialog"
+  },
+  "colorSaturation": "Saturation",
+  "@colorSaturation": {
+    "description": "Slider label in the custom color dialog"
+  },
+  "colorBrightness": "Brightness",
+  "@colorBrightness": {
+    "description": "Slider label in the custom color dialog"
+  },
+  "actionSave": "Save",
+  "@actionSave": {
+    "description": "Generic save button label"
+  },
+  "actionCancel": "Cancel",
+  "@actionCancel": {
+    "description": "Generic cancel button label"
+  },
+  "previewInvalid": "Code preview unavailable",
+  "@previewInvalid": {
+    "description": "Placeholder in the live preview when the code value cannot be rendered in the selected format"
+  },
+  "codeIssueCharset": "Contains characters not allowed in {format}",
+  "@codeIssueCharset": {
+    "description": "Warning under the code value field: value uses characters outside the format's character set",
+    "placeholders": {
+      "format": {
+        "type": "String",
+        "example": "EAN-13"
+      }
+    }
+  },
+  "codeIssueLength": "Length does not match {format}",
+  "@codeIssueLength": {
+    "description": "Warning under the code value field: value has the wrong length for the format",
+    "placeholders": {
+      "format": {
+        "type": "String",
+        "example": "EAN-13"
+      }
+    }
+  },
+  "codeIssueCheckDigit": "Check digit is not valid for {format}",
+  "@codeIssueCheckDigit": {
+    "description": "Warning under the code value field: the trailing check digit does not match",
+    "placeholders": {
+      "format": {
+        "type": "String",
+        "example": "EAN-13"
+      }
+    }
+  },
+  "forceSaveTitle": "Save non-standard code?",
+  "@forceSaveTitle": {
+    "description": "Title of the confirmation dialog when saving a code value that fails format validation"
+  },
+  "forceSaveBody": "The code value does not conform to {format}. You can save it anyway — some scanners may not read it.",
+  "@forceSaveBody": {
+    "description": "Body of the force-save confirmation dialog",
+    "placeholders": {
+      "format": {
+        "type": "String",
+        "example": "EAN-13"
+      }
+    }
+  },
+  "forceSaveConfirm": "Save anyway",
+  "@forceSaveConfirm": {
+    "description": "Confirm button of the force-save dialog"
   }
 }

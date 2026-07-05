@@ -21,6 +21,7 @@ dependencies:
   # 预声明，本阶段未使用（SPEC §5.3 关键依赖）
   dio: ^5.10.0 # API client → M2-06
   flutter_secure_storage: ^10.0.0 # 令牌存储 → M2 登录流
+  barcode_widget: ^2.0.4
 
 dev_dependencies:
   flutter_test:

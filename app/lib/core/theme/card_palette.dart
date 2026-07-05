@@ -35,4 +35,21 @@ abstract final class CardPalette {
     brown,
     blueGrey,
   ];
+
+  /// 卡面前景色：自定义浅色卡面用黑字，其余（含全部预置色）用白字。
+  static Color foregroundFor(Color background) =>
+      background.computeLuminance() > 0.4 ? Colors.black87 : Colors.white;
+
+  /// 解析数据库存储的 `#RRGGBB`；非法值回退默认色（防御同步来的脏数据）。
+  static Color parseHex(String hex) {
+    final match = RegExp(r'^#([0-9A-Fa-f]{6})$').firstMatch(hex);
+    if (match == null) return defaultColor;
+    return Color(0xFF000000 | int.parse(match.group(1)!, radix: 16));
+  }
+
+  /// 序列化为数据库/同步协议格式 `#RRGGBB`（SPEC §6.2）。
+  static String toHex(Color color) {
+    final argb = color.toARGB32() & 0xFFFFFF;
+    return '#${argb.toRadixString(16).padLeft(6, '0').toUpperCase()}';
+  }
 }
