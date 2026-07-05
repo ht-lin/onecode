@@ -1,0 +1,9 @@
+# drift 代码生成配置。
+# 时间戳存为 ISO-8601 文本（而非 unix 秒）：保留毫秒精度，
+# 同步协议（SPEC §6.4 LWW 按 updated_at 判定）依赖亚秒级比较。
+targets:
+  $default:
+    builders:
+      drift_dev:
+        options:
+          store_date_time_values_as_text: true
