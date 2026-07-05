@@ -4,6 +4,10 @@
 .vscode/
 *.log
 
+# ===== claude =====
+.claude/
+SPEC.md
+
 # ===== Flutter (app/) =====
 app/.dart_tool/
 app/.pub-cache/
