@@ -295,6 +295,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save anyway'**
   String get forceSaveConfirm;
+
+  /// Entry in the wallet '+' menu: open the camera scanner (default capture method)
+  ///
+  /// In en, this message translates to:
+  /// **'Scan barcode'**
+  String get addMenuScan;
+
+  /// Entry in the wallet '+' menu: open the blank card editor for manual input
+  ///
+  /// In en, this message translates to:
+  /// **'Enter manually'**
+  String get addMenuManual;
+
+  /// App bar title of the camera scanner page
+  ///
+  /// In en, this message translates to:
+  /// **'Scan code'**
+  String get scanTitle;
+
+  /// Hint text below the viewfinder frame on the scanner page
+  ///
+  /// In en, this message translates to:
+  /// **'Align the code within the frame'**
+  String get scanHint;
+
+  /// Tooltip of the torch toggle button on the scanner page
+  ///
+  /// In en, this message translates to:
+  /// **'Flashlight'**
+  String get scanTorchTooltip;
+
+  /// Privacy rationale shown before the first camera permission request
+  ///
+  /// In en, this message translates to:
+  /// **'OneCode uses the camera only to scan barcodes. Images are processed on your device and are never stored or uploaded.'**
+  String get scanPermissionRationale;
+
+  /// Button on the rationale pane that triggers the system camera permission dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Allow camera access'**
+  String get scanPermissionAllow;
+
+  /// Guidance shown after camera permission was denied; points to the system settings
+  ///
+  /// In en, this message translates to:
+  /// **'To scan codes, please allow camera access in the system settings.'**
+  String get scanPermissionDeniedBody;
+
+  /// Button on the denied pane that opens the app's system settings page
+  ///
+  /// In en, this message translates to:
+  /// **'Open settings'**
+  String get scanOpenSettings;
+
+  /// Title of the bottom sheet previewing a successfully scanned code
+  ///
+  /// In en, this message translates to:
+  /// **'Code detected'**
+  String get scanResultTitle;
+
+  /// Confirm button of the scan preview sheet; continues to the prefilled card editor
+  ///
+  /// In en, this message translates to:
+  /// **'Use code'**
+  String get scanUseCode;
+
+  /// Dismiss button of the scan preview sheet; returns to the live viewfinder
+  ///
+  /// In en, this message translates to:
+  /// **'Scan again'**
+  String get scanRescan;
 }
 
 class _AppLocalizationsDelegate

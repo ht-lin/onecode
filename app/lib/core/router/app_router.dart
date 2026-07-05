@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../data/drift/enums.dart';
 import '../../features/account/presentation/settings_page.dart';
+import '../../features/capture/presentation/scan_page.dart';
 import '../../features/card_editor/presentation/card_editor_page.dart';
 import '../../features/friends/presentation/friends_page.dart';
 import '../../features/wallet/presentation/wallet_page.dart';
@@ -15,7 +16,11 @@ part 'app_router.g.dart';
 GoRouter appRouter(Ref ref) => GoRouter(
       initialLocation: AppRoutes.wallet,
       routes: [
-        // 编辑页在根导航器上（全屏盖过底部 Tab 栏）。
+        // 录入/编辑页在根导航器上（全屏盖过底部 Tab 栏）。
+        GoRoute(
+          path: AppRoutes.scan,
+          builder: (context, state) => const ScanPage(),
+        ),
         GoRoute(
           path: AppRoutes.cardNew,
           builder: (context, state) {

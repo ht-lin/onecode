@@ -155,5 +155,53 @@
   "forceSaveConfirm": "Save anyway",
   "@forceSaveConfirm": {
     "description": "Confirm button of the force-save dialog"
+  },
+  "addMenuScan": "Scan barcode",
+  "@addMenuScan": {
+    "description": "Entry in the wallet '+' menu: open the camera scanner (default capture method)"
+  },
+  "addMenuManual": "Enter manually",
+  "@addMenuManual": {
+    "description": "Entry in the wallet '+' menu: open the blank card editor for manual input"
+  },
+  "scanTitle": "Scan code",
+  "@scanTitle": {
+    "description": "App bar title of the camera scanner page"
+  },
+  "scanHint": "Align the code within the frame",
+  "@scanHint": {
+    "description": "Hint text below the viewfinder frame on the scanner page"
+  },
+  "scanTorchTooltip": "Flashlight",
+  "@scanTorchTooltip": {
+    "description": "Tooltip of the torch toggle button on the scanner page"
+  },
+  "scanPermissionRationale": "OneCode uses the camera only to scan barcodes. Images are processed on your device and are never stored or uploaded.",
+  "@scanPermissionRationale": {
+    "description": "Privacy rationale shown before the first camera permission request"
+  },
+  "scanPermissionAllow": "Allow camera access",
+  "@scanPermissionAllow": {
+    "description": "Button on the rationale pane that triggers the system camera permission dialog"
+  },
+  "scanPermissionDeniedBody": "To scan codes, please allow camera access in the system settings.",
+  "@scanPermissionDeniedBody": {
+    "description": "Guidance shown after camera permission was denied; points to the system settings"
+  },
+  "scanOpenSettings": "Open settings",
+  "@scanOpenSettings": {
+    "description": "Button on the denied pane that opens the app's system settings page"
+  },
+  "scanResultTitle": "Code detected",
+  "@scanResultTitle": {
+    "description": "Title of the bottom sheet previewing a successfully scanned code"
+  },
+  "scanUseCode": "Use code",
+  "@scanUseCode": {
+    "description": "Confirm button of the scan preview sheet; continues to the prefilled card editor"
+  },
+  "scanRescan": "Scan again",
+  "@scanRescan": {
+    "description": "Dismiss button of the scan preview sheet; returns to the live viewfinder"
   }
 }

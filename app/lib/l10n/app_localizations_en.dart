@@ -114,4 +114,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get forceSaveConfirm => 'Save anyway';
+
+  @override
+  String get addMenuScan => 'Scan barcode';
+
+  @override
+  String get addMenuManual => 'Enter manually';
+
+  @override
+  String get scanTitle => 'Scan code';
+
+  @override
+  String get scanHint => 'Align the code within the frame';
+
+  @override
+  String get scanTorchTooltip => 'Flashlight';
+
+  @override
+  String get scanPermissionRationale =>
+      'OneCode uses the camera only to scan barcodes. Images are processed on your device and are never stored or uploaded.';
+
+  @override
+  String get scanPermissionAllow => 'Allow camera access';
+
+  @override
+  String get scanPermissionDeniedBody =>
+      'To scan codes, please allow camera access in the system settings.';
+
+  @override
+  String get scanOpenSettings => 'Open settings';
+
+  @override
+  String get scanResultTitle => 'Code detected';
+
+  @override
+  String get scanUseCode => 'Use code';
+
+  @override
+  String get scanRescan => 'Scan again';
 }

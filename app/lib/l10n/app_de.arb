@@ -32,5 +32,17 @@
   "codeIssueCheckDigit": "Prüfziffer ist für {format} ungültig",
   "forceSaveTitle": "Nicht standardkonformen Code speichern?",
   "forceSaveBody": "Der Codewert entspricht nicht {format}. Du kannst ihn trotzdem speichern – manche Scanner lesen ihn eventuell nicht.",
-  "forceSaveConfirm": "Trotzdem speichern"
+  "forceSaveConfirm": "Trotzdem speichern",
+  "addMenuScan": "Barcode scannen",
+  "addMenuManual": "Manuell eingeben",
+  "scanTitle": "Code scannen",
+  "scanHint": "Code im Rahmen ausrichten",
+  "scanTorchTooltip": "Taschenlampe",
+  "scanPermissionRationale": "OneCode verwendet die Kamera ausschließlich zum Scannen von Codes. Bilder werden nur auf deinem Gerät verarbeitet und weder gespeichert noch hochgeladen.",
+  "scanPermissionAllow": "Kamerazugriff erlauben",
+  "scanPermissionDeniedBody": "Um Codes zu scannen, erlaube bitte den Kamerazugriff in den Systemeinstellungen.",
+  "scanOpenSettings": "Einstellungen öffnen",
+  "scanResultTitle": "Code erkannt",
+  "scanUseCode": "Code verwenden",
+  "scanRescan": "Erneut scannen"
 }
