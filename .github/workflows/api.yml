@@ -1,0 +1,128 @@
+name: API
+
+# 不用 on.paths 过滤：path-filtered workflow 不触发时 required check 会永远停在
+# "Expected" 而阻塞合并。改为总是触发，由 changes job 判定路径，未命中时后续
+# job 被 skip —— GitHub 对 required check 将 skipped 视为通过（skipped-as-success）。
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: api-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    name: API Changes
+    runs-on: ubuntu-latest
+    outputs:
+      api: ${{ steps.filter.outputs.api }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            api:
+              - 'api/**'
+              - '.github/workflows/api.yml'
+
+  quality:
+    name: API Quality
+    needs: changes
+    if: needs.changes.outputs.api == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: app
+          POSTGRES_DB: app
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U app"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://app:app@127.0.0.1:5432/app?serverVersion=16&charset=utf8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: intl, pdo_pgsql, zip
+          coverage: none
+
+      - name: Install Composer dependencies (cached)
+        uses: ramsey/composer-install@v3
+        with:
+          working-directory: api
+
+      # phpstan-symfony 需要 warmup 产物 var/cache/dev/App_KernelDevDebugContainer.xml
+      - name: Warm up Symfony cache
+        run: php bin/console cache:warmup --env=dev
+
+      - name: PHPStan
+        run: composer stan
+
+      - name: php-cs-fixer (dry-run)
+        run: composer cs
+
+      - name: Prepare test database
+        run: |
+          php bin/console -e test doctrine:database:create --if-not-exists
+          php bin/console -e test doctrine:migrations:migrate --no-interaction
+
+      - name: PHPUnit
+        run: composer test
+
+  docker:
+    name: API Docker Image
+    needs: [changes, quality]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.changes.outputs.api == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}/api
+          tags: |
+            type=raw,value=latest
+            type=sha,format=long
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: api
+          target: frankenphp_prod
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=api
+          cache-to: type=gha,scope=api,mode=max
