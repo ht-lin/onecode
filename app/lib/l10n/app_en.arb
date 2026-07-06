@@ -338,6 +338,70 @@
       }
     }
   },
+  "settingsAccountSection": "Account",
+  "@settingsAccountSection": {
+    "description": "Settings section header for the account area"
+  },
+  "settingsSignInTitle": "Sign in",
+  "@settingsSignInTitle": {
+    "description": "Title of the settings entry that will lead to sign-in (placeholder until accounts ship)"
+  },
+  "settingsSignInSubtitle": "Sync your cards and share them with friends",
+  "@settingsSignInSubtitle": {
+    "description": "Subtitle explaining why to sign in; shown under the sign-in entry while logged out"
+  },
+  "settingsSignInComingSoon": "Sign-in is coming in a future update.",
+  "@settingsSignInComingSoon": {
+    "description": "Snackbar shown when tapping the sign-in placeholder entry before accounts are available"
+  },
+  "settingsGeneralSection": "General",
+  "@settingsGeneralSection": {
+    "description": "Settings section header for language and appearance"
+  },
+  "settingsLanguage": "Language",
+  "@settingsLanguage": {
+    "description": "Label of the settings row that selects the app language"
+  },
+  "settingsLanguageSystem": "System",
+  "@settingsLanguageSystem": {
+    "description": "Language option: follow the device language (the explicit options 'Deutsch'/'English' are shown untranslated)"
+  },
+  "settingsAppearance": "Appearance",
+  "@settingsAppearance": {
+    "description": "Label of the settings row that selects light/dark theme"
+  },
+  "settingsAppearanceSystem": "System",
+  "@settingsAppearanceSystem": {
+    "description": "Appearance option: follow the device light/dark setting"
+  },
+  "settingsAppearanceLight": "Light",
+  "@settingsAppearanceLight": {
+    "description": "Appearance option: always light theme"
+  },
+  "settingsAppearanceDark": "Dark",
+  "@settingsAppearanceDark": {
+    "description": "Appearance option: always dark theme"
+  },
+  "settingsLegalSection": "Legal",
+  "@settingsLegalSection": {
+    "description": "Settings section header for the legal pages (Impressum, privacy policy, licenses)"
+  },
+  "legalImpressum": "Legal notice (Impressum)",
+  "@legalImpressum": {
+    "description": "Settings entry and page title of the German Impressum required by DDG §5"
+  },
+  "legalPrivacy": "Privacy policy",
+  "@legalPrivacy": {
+    "description": "Settings entry and page title of the Datenschutzerklärung (GDPR privacy policy)"
+  },
+  "legalLicenses": "Open source licenses",
+  "@legalLicenses": {
+    "description": "Settings entry that opens the auto-generated open source license list"
+  },
+  "settingsVersion": "Version",
+  "@settingsVersion": {
+    "description": "Label of the settings row showing the app version number"
+  },
   "settingsRemindersSection": "Expiry reminders",
   "@settingsRemindersSection": {
     "description": "Settings section header for the coupon expiry reminder preferences"

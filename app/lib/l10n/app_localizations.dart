@@ -536,6 +536,102 @@ abstract class AppLocalizations {
   /// **'{name} is only valid until today.'**
   String notifExpiresTodayBody(String name);
 
+  /// Settings section header for the account area
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get settingsAccountSection;
+
+  /// Title of the settings entry that will lead to sign-in (placeholder until accounts ship)
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get settingsSignInTitle;
+
+  /// Subtitle explaining why to sign in; shown under the sign-in entry while logged out
+  ///
+  /// In en, this message translates to:
+  /// **'Sync your cards and share them with friends'**
+  String get settingsSignInSubtitle;
+
+  /// Snackbar shown when tapping the sign-in placeholder entry before accounts are available
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in is coming in a future update.'**
+  String get settingsSignInComingSoon;
+
+  /// Settings section header for language and appearance
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get settingsGeneralSection;
+
+  /// Label of the settings row that selects the app language
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settingsLanguage;
+
+  /// Language option: follow the device language (the explicit options 'Deutsch'/'English' are shown untranslated)
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get settingsLanguageSystem;
+
+  /// Label of the settings row that selects light/dark theme
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get settingsAppearance;
+
+  /// Appearance option: follow the device light/dark setting
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get settingsAppearanceSystem;
+
+  /// Appearance option: always light theme
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get settingsAppearanceLight;
+
+  /// Appearance option: always dark theme
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get settingsAppearanceDark;
+
+  /// Settings section header for the legal pages (Impressum, privacy policy, licenses)
+  ///
+  /// In en, this message translates to:
+  /// **'Legal'**
+  String get settingsLegalSection;
+
+  /// Settings entry and page title of the German Impressum required by DDG §5
+  ///
+  /// In en, this message translates to:
+  /// **'Legal notice (Impressum)'**
+  String get legalImpressum;
+
+  /// Settings entry and page title of the Datenschutzerklärung (GDPR privacy policy)
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get legalPrivacy;
+
+  /// Settings entry that opens the auto-generated open source license list
+  ///
+  /// In en, this message translates to:
+  /// **'Open source licenses'**
+  String get legalLicenses;
+
+  /// Label of the settings row showing the app version number
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get settingsVersion;
+
   /// Settings section header for the coupon expiry reminder preferences
   ///
   /// In en, this message translates to:

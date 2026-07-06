@@ -8,7 +8,9 @@ import '../../features/capture/presentation/scan_page.dart';
 import '../../features/card_display/presentation/card_display_page.dart';
 import '../../features/card_editor/presentation/card_editor_page.dart';
 import '../../features/friends/presentation/friends_page.dart';
+import '../../features/legal/presentation/legal_page.dart';
 import '../../features/wallet/presentation/wallet_page.dart';
+import '../../l10n/app_localizations.dart';
 import 'app_shell.dart';
 import 'routes.dart';
 
@@ -50,6 +52,20 @@ GoRouter appRouter(Ref ref) => GoRouter(
           path: '/card/:id',
           builder: (context, state) =>
               CardDisplayPage(cardId: state.pathParameters['id']!),
+        ),
+        GoRoute(
+          path: AppRoutes.impressum,
+          builder: (context, state) => LegalPage(
+            title: AppLocalizations.of(context).legalImpressum,
+            sections: impressumSections,
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.privacy,
+          builder: (context, state) => LegalPage(
+            title: AppLocalizations.of(context).legalPrivacy,
+            sections: privacySections,
+          ),
         ),
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) =>

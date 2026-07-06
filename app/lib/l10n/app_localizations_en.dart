@@ -253,6 +253,56 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get settingsAccountSection => 'Account';
+
+  @override
+  String get settingsSignInTitle => 'Sign in';
+
+  @override
+  String get settingsSignInSubtitle =>
+      'Sync your cards and share them with friends';
+
+  @override
+  String get settingsSignInComingSoon =>
+      'Sign-in is coming in a future update.';
+
+  @override
+  String get settingsGeneralSection => 'General';
+
+  @override
+  String get settingsLanguage => 'Language';
+
+  @override
+  String get settingsLanguageSystem => 'System';
+
+  @override
+  String get settingsAppearance => 'Appearance';
+
+  @override
+  String get settingsAppearanceSystem => 'System';
+
+  @override
+  String get settingsAppearanceLight => 'Light';
+
+  @override
+  String get settingsAppearanceDark => 'Dark';
+
+  @override
+  String get settingsLegalSection => 'Legal';
+
+  @override
+  String get legalImpressum => 'Legal notice (Impressum)';
+
+  @override
+  String get legalPrivacy => 'Privacy policy';
+
+  @override
+  String get legalLicenses => 'Open source licenses';
+
+  @override
+  String get settingsVersion => 'Version';
+
+  @override
   String get settingsRemindersSection => 'Expiry reminders';
 
   @override

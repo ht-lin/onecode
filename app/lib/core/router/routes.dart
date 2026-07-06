@@ -24,4 +24,8 @@ abstract final class AppRoutes {
 
   /// 卡片展示页（M1-07，SPEC §3.4）：点卡面直达，收银台性能关键路径。
   static String cardDisplay(String id) => '/card/$id';
+
+  /// 法务页（M1-09，SPEC §9.3），从设置进入。
+  static const impressum = '/legal/impressum';
+  static const privacy = '/legal/privacy';
 }

@@ -254,6 +254,56 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get settingsAccountSection => 'Konto';
+
+  @override
+  String get settingsSignInTitle => 'Anmelden';
+
+  @override
+  String get settingsSignInSubtitle =>
+      'Karten synchronisieren und mit Freunden teilen';
+
+  @override
+  String get settingsSignInComingSoon =>
+      'Die Anmeldung kommt in einem späteren Update.';
+
+  @override
+  String get settingsGeneralSection => 'Allgemein';
+
+  @override
+  String get settingsLanguage => 'Sprache';
+
+  @override
+  String get settingsLanguageSystem => 'System';
+
+  @override
+  String get settingsAppearance => 'Erscheinungsbild';
+
+  @override
+  String get settingsAppearanceSystem => 'System';
+
+  @override
+  String get settingsAppearanceLight => 'Hell';
+
+  @override
+  String get settingsAppearanceDark => 'Dunkel';
+
+  @override
+  String get settingsLegalSection => 'Rechtliches';
+
+  @override
+  String get legalImpressum => 'Impressum';
+
+  @override
+  String get legalPrivacy => 'Datenschutzerklärung';
+
+  @override
+  String get legalLicenses => 'Open-Source-Lizenzen';
+
+  @override
+  String get settingsVersion => 'Version';
+
+  @override
   String get settingsRemindersSection => 'Ablauf-Erinnerungen';
 
   @override
