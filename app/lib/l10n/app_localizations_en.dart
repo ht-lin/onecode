@@ -223,4 +223,83 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get displayDetailsTooltip => 'Card details';
+
+  @override
+  String get notifChannelName => 'Expiry reminders';
+
+  @override
+  String get notifChannelDescription => 'Reminders before coupons expire';
+
+  @override
+  String get notifExpiresSoonTitle => 'Coupon expires soon';
+
+  @override
+  String notifExpiresSoonBody(String name, int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days days',
+      one: '1 day',
+    );
+    return '$name expires in $_temp0.';
+  }
+
+  @override
+  String get notifExpiresTodayTitle => 'Coupon expires today';
+
+  @override
+  String notifExpiresTodayBody(String name) {
+    return '$name is only valid until today.';
+  }
+
+  @override
+  String get settingsRemindersSection => 'Expiry reminders';
+
+  @override
+  String get settingsRemindersEnabled => 'Notify before expiry';
+
+  @override
+  String get settingsRemindersLeadDays => 'Days in advance';
+
+  @override
+  String settingsLeadDaysValue(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days days',
+      one: '1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String cleanupPromptBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count coupons expired more than 30 days ago.',
+      one: '1 coupon expired more than 30 days ago.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cleanupPromptAction => 'Clean up';
+
+  @override
+  String get cleanupPromptLater => 'Not now';
+
+  @override
+  String get cleanupConfirmTitle => 'Delete expired coupons?';
+
+  @override
+  String cleanupConfirmBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count expired coupons will be removed from your wallet.',
+      one: '1 expired coupon will be removed from your wallet.',
+    );
+    return '$_temp0';
+  }
 }

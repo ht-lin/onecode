@@ -206,6 +206,49 @@ void main() {
     });
   });
 
+  group('批量清理横幅（M1-08，SPEC §3.8）', () {
+    testWidgets('仅过期超 30 天的卡计入；确认后软删除，近期过期的保留', (tester) async {
+      final oldId = await addCard('Gutschein Alt',
+          kind: CardKind.coupon, expiresAt: DateTime.utc(2020, 1, 1));
+      // 刚过期两天：置灰标识，但不进清理横幅。
+      await addCard('Gutschein Neulich',
+          kind: CardKind.coupon,
+          expiresAt: DateTime.now().toUtc().subtract(const Duration(days: 2)));
+      await pumpWallet(tester);
+
+      expect(find.byType(MaterialBanner), findsOneWidget);
+      expect(
+          find.text('1 coupon expired more than 30 days ago.'), findsOneWidget);
+
+      // 不自动删除：需经确认对话框。
+      await tester.tap(find.text('Clean up'));
+      await tester.pumpAndSettle();
+      expect(find.text('Delete expired coupons?'), findsOneWidget);
+      await tester.tap(find.widgetWithText(FilledButton, 'Delete'));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(MaterialBanner), findsNothing);
+      expect(visibleTileNames(tester), ['Gutschein Neulich']);
+      final row = await (db.select(db.cards)
+            ..where((c) => c.id.equals(oldId)))
+          .getSingle();
+      expect(row.deletedAt, isNotNull);
+    });
+
+    testWidgets('"Not now" 本会话内隐藏横幅', (tester) async {
+      await addCard('Gutschein Alt',
+          kind: CardKind.coupon, expiresAt: DateTime.utc(2020, 1, 1));
+      await pumpWallet(tester);
+      expect(find.byType(MaterialBanner), findsOneWidget);
+
+      await tester.tap(find.text('Not now'));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(MaterialBanner), findsNothing);
+      expect(find.byType(WalletCardTile), findsOneWidget);
+    });
+  });
+
   group('长按操作', () {
     testWidgets('收藏切换并实时重排', (tester) async {
       await addCard('Alpha');

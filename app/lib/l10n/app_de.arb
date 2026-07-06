@@ -66,5 +66,20 @@
   "deleteConfirmTitle": "Karte löschen?",
   "deleteConfirmBody": "„{name}“ wird aus deiner Kartensammlung entfernt.",
   "displayRotateTooltip": "Anzeige drehen",
-  "displayDetailsTooltip": "Kartendetails"
+  "displayDetailsTooltip": "Kartendetails",
+  "notifChannelName": "Ablauf-Erinnerungen",
+  "notifChannelDescription": "Erinnerungen, bevor Gutscheine ablaufen",
+  "notifExpiresSoonTitle": "Gutschein läuft bald ab",
+  "notifExpiresSoonBody": "{name} läuft in {days, plural, =1{einem Tag} other{{days} Tagen}} ab.",
+  "notifExpiresTodayTitle": "Gutschein läuft heute ab",
+  "notifExpiresTodayBody": "{name} ist nur noch heute gültig.",
+  "settingsRemindersSection": "Ablauf-Erinnerungen",
+  "settingsRemindersEnabled": "Vor Ablauf benachrichtigen",
+  "settingsRemindersLeadDays": "Tage im Voraus",
+  "settingsLeadDaysValue": "{days, plural, =1{1 Tag} other{{days} Tage}}",
+  "cleanupPromptBody": "{count, plural, =1{1 Gutschein ist seit über 30 Tagen abgelaufen.} other{{count} Gutscheine sind seit über 30 Tagen abgelaufen.}}",
+  "cleanupPromptAction": "Aufräumen",
+  "cleanupPromptLater": "Später",
+  "cleanupConfirmTitle": "Abgelaufene Gutscheine löschen?",
+  "cleanupConfirmBody": "{count, plural, =1{1 abgelaufener Gutschein wird aus deiner Kartensammlung entfernt.} other{{count} abgelaufene Gutscheine werden aus deiner Kartensammlung entfernt.}}"
 }

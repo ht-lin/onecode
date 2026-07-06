@@ -8,6 +8,7 @@ import 'package:onecode/data/providers.dart';
 import 'package:onecode/features/account/presentation/settings_page.dart';
 import 'package:onecode/features/friends/presentation/friends_page.dart';
 import 'package:onecode/features/wallet/presentation/wallet_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// tab 标签同时出现在页面正文占位里，限定在 NavigationBar 内查找。
 Finder navLabel(String label) => find.descendant(
@@ -22,6 +23,8 @@ void main() {
   late ProviderContainer container;
 
   setUp(() {
+    // 设置页从 M1-08 起读提醒偏好（shared_preferences），注入内存实现。
+    SharedPreferences.setMockInitialValues({});
     db = AppDatabase(NativeDatabase.memory());
     container = ProviderContainer(
       overrides: [appDatabaseProvider.overrideWithValue(db)],

@@ -297,5 +297,99 @@
   "displayDetailsTooltip": "Card details",
   "@displayDetailsTooltip": {
     "description": "Tooltip of the card display page button that opens the details sheet (note, expiry, edit, delete)"
+  },
+  "notifChannelName": "Expiry reminders",
+  "@notifChannelName": {
+    "description": "Android notification channel name for coupon expiry reminders, visible in system settings"
+  },
+  "notifChannelDescription": "Reminders before coupons expire",
+  "@notifChannelDescription": {
+    "description": "Android notification channel description, visible in system settings"
+  },
+  "notifExpiresSoonTitle": "Coupon expires soon",
+  "@notifExpiresSoonTitle": {
+    "description": "Title of the reminder notification sent a few days before a coupon expires"
+  },
+  "notifExpiresSoonBody": "{name} expires in {days, plural, =1{1 day} other{{days} days}}.",
+  "@notifExpiresSoonBody": {
+    "description": "Body of the advance reminder notification; days equals the configured lead time",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "REWE"
+      },
+      "days": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "notifExpiresTodayTitle": "Coupon expires today",
+  "@notifExpiresTodayTitle": {
+    "description": "Title of the reminder notification sent on the expiry day itself"
+  },
+  "notifExpiresTodayBody": "{name} is only valid until today.",
+  "@notifExpiresTodayBody": {
+    "description": "Body of the expiry-day reminder notification",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "REWE"
+      }
+    }
+  },
+  "settingsRemindersSection": "Expiry reminders",
+  "@settingsRemindersSection": {
+    "description": "Settings section header for the coupon expiry reminder preferences"
+  },
+  "settingsRemindersEnabled": "Notify before expiry",
+  "@settingsRemindersEnabled": {
+    "description": "Label of the settings switch that enables/disables expiry reminder notifications"
+  },
+  "settingsRemindersLeadDays": "Days in advance",
+  "@settingsRemindersLeadDays": {
+    "description": "Label of the settings row that selects how many days before expiry the first reminder fires"
+  },
+  "settingsLeadDaysValue": "{days, plural, =1{1 day} other{{days} days}}",
+  "@settingsLeadDaysValue": {
+    "description": "Display value of the lead-time selector",
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "cleanupPromptBody": "{count, plural, =1{1 coupon expired more than 30 days ago.} other{{count} coupons expired more than 30 days ago.}}",
+  "@cleanupPromptBody": {
+    "description": "Text of the wallet banner suggesting to batch-clean coupons that expired over 30 days ago",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "4"
+      }
+    }
+  },
+  "cleanupPromptAction": "Clean up",
+  "@cleanupPromptAction": {
+    "description": "Banner action that opens the batch cleanup confirmation dialog"
+  },
+  "cleanupPromptLater": "Not now",
+  "@cleanupPromptLater": {
+    "description": "Banner action that dismisses the cleanup suggestion for this session"
+  },
+  "cleanupConfirmTitle": "Delete expired coupons?",
+  "@cleanupConfirmTitle": {
+    "description": "Title of the batch cleanup confirmation dialog"
+  },
+  "cleanupConfirmBody": "{count, plural, =1{1 expired coupon will be removed from your wallet.} other{{count} expired coupons will be removed from your wallet.}}",
+  "@cleanupConfirmBody": {
+    "description": "Body of the batch cleanup confirmation dialog",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "4"
+      }
+    }
   }
 }

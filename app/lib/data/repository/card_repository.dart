@@ -97,6 +97,18 @@ class CardRepository {
         CardsCompanion(deletedAt: Value(now), updatedAt: Value(now)));
   }
 
+  /// 批量软删除（SPEC §3.8：过期 30 天批量清理），单事务落墓碑。
+  Future<void> softDeleteCards(Iterable<String> ids) async {
+    final now = _now().toUtc();
+    await _db.transaction(() async {
+      for (final id in ids) {
+        await _requireOwnCard(id);
+        await (_db.update(_db.cards)..where((c) => c.id.equals(id))).write(
+            CardsCompanion(deletedAt: Value(now), updatedAt: Value(now)));
+      }
+    });
+  }
+
   /// 收藏切换（置顶显示，SPEC §3.2/§3.3）。
   Future<void> toggleFavorite(String id) async {
     final state = await _stateOf(id);

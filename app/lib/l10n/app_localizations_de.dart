@@ -223,4 +223,85 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get displayDetailsTooltip => 'Kartendetails';
+
+  @override
+  String get notifChannelName => 'Ablauf-Erinnerungen';
+
+  @override
+  String get notifChannelDescription =>
+      'Erinnerungen, bevor Gutscheine ablaufen';
+
+  @override
+  String get notifExpiresSoonTitle => 'Gutschein läuft bald ab';
+
+  @override
+  String notifExpiresSoonBody(String name, int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tagen',
+      one: 'einem Tag',
+    );
+    return '$name läuft in $_temp0 ab.';
+  }
+
+  @override
+  String get notifExpiresTodayTitle => 'Gutschein läuft heute ab';
+
+  @override
+  String notifExpiresTodayBody(String name) {
+    return '$name ist nur noch heute gültig.';
+  }
+
+  @override
+  String get settingsRemindersSection => 'Ablauf-Erinnerungen';
+
+  @override
+  String get settingsRemindersEnabled => 'Vor Ablauf benachrichtigen';
+
+  @override
+  String get settingsRemindersLeadDays => 'Tage im Voraus';
+
+  @override
+  String settingsLeadDaysValue(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days Tage',
+      one: '1 Tag',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String cleanupPromptBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Gutscheine sind seit über 30 Tagen abgelaufen.',
+      one: '1 Gutschein ist seit über 30 Tagen abgelaufen.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cleanupPromptAction => 'Aufräumen';
+
+  @override
+  String get cleanupPromptLater => 'Später';
+
+  @override
+  String get cleanupConfirmTitle => 'Abgelaufene Gutscheine löschen?';
+
+  @override
+  String cleanupConfirmBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          '$count abgelaufene Gutscheine werden aus deiner Kartensammlung entfernt.',
+      one: '1 abgelaufener Gutschein wird aus deiner Kartensammlung entfernt.',
+    );
+    return '$_temp0';
+  }
 }

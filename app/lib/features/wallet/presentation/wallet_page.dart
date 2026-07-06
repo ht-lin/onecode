@@ -6,6 +6,7 @@ import '../../../core/router/routes.dart';
 import '../../../data/providers.dart';
 import '../../../data/repository/card_repository.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../reminders/domain/expiry_reminder_rules.dart';
 import '../domain/wallet_filter.dart';
 import 'wallet_providers.dart';
 import 'widgets/wallet_card_tile.dart';
@@ -24,6 +25,9 @@ class WalletPage extends ConsumerStatefulWidget {
 class _WalletPageState extends ConsumerState<WalletPage> {
   final _search = TextEditingController();
   WalletFilter _filter = WalletFilter.all;
+
+  /// 清理横幅本次会话内被"以后再说"关闭（SPEC §3.8：只提示，不自动删）。
+  bool _cleanupDismissed = false;
 
   @override
   void dispose() {
@@ -63,8 +67,31 @@ class _WalletPageState extends ConsumerState<WalletPage> {
       now: now,
     );
 
+    // 过期超 30 天的自有卡 → 批量清理横幅（SPEC §3.8）。
+    final cleanupCandidates = _cleanupDismissed
+        ? const <CardWithState>[]
+        : [
+            for (final entry in cards)
+              if (isCleanupCandidate(entry.card, now)) entry,
+          ];
+
     return Column(
       children: [
+        if (cleanupCandidates.isNotEmpty)
+          MaterialBanner(
+            leading: const Icon(Icons.auto_delete_outlined),
+            content: Text(l10n.cleanupPromptBody(cleanupCandidates.length)),
+            actions: [
+              TextButton(
+                onPressed: () => setState(() => _cleanupDismissed = true),
+                child: Text(l10n.cleanupPromptLater),
+              ),
+              TextButton(
+                onPressed: () => _confirmCleanup(context, cleanupCandidates),
+                child: Text(l10n.cleanupPromptAction),
+              ),
+            ],
+          ),
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
           child: TextField(
@@ -207,6 +234,34 @@ class _WalletPageState extends ConsumerState<WalletPage> {
     if (confirmed == true) {
       // 软删除：只落墓碑（SPEC §3.3/§6.1），流会自动移除该卡。
       await ref.read(cardRepositoryProvider).softDeleteCard(entry.card.id);
+    }
+  }
+
+  /// 批量清理确认（SPEC §3.8）：绝不自动删除，删除走软删除墓碑。
+  Future<void> _confirmCleanup(
+      BuildContext context, List<CardWithState> candidates) async {
+    final l10n = AppLocalizations.of(context);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(l10n.cleanupConfirmTitle),
+        content: Text(l10n.cleanupConfirmBody(candidates.length)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(l10n.actionCancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(l10n.cardActionDelete),
+          ),
+        ],
+      ),
+    );
+    if (confirmed == true) {
+      await ref
+          .read(cardRepositoryProvider)
+          .softDeleteCards([for (final entry in candidates) entry.card.id]);
     }
   }
 

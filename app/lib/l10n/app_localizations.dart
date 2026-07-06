@@ -499,6 +499,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Card details'**
   String get displayDetailsTooltip;
+
+  /// Android notification channel name for coupon expiry reminders, visible in system settings
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry reminders'**
+  String get notifChannelName;
+
+  /// Android notification channel description, visible in system settings
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders before coupons expire'**
+  String get notifChannelDescription;
+
+  /// Title of the reminder notification sent a few days before a coupon expires
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon expires soon'**
+  String get notifExpiresSoonTitle;
+
+  /// Body of the advance reminder notification; days equals the configured lead time
+  ///
+  /// In en, this message translates to:
+  /// **'{name} expires in {days, plural, =1{1 day} other{{days} days}}.'**
+  String notifExpiresSoonBody(String name, int days);
+
+  /// Title of the reminder notification sent on the expiry day itself
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon expires today'**
+  String get notifExpiresTodayTitle;
+
+  /// Body of the expiry-day reminder notification
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is only valid until today.'**
+  String notifExpiresTodayBody(String name);
+
+  /// Settings section header for the coupon expiry reminder preferences
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry reminders'**
+  String get settingsRemindersSection;
+
+  /// Label of the settings switch that enables/disables expiry reminder notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Notify before expiry'**
+  String get settingsRemindersEnabled;
+
+  /// Label of the settings row that selects how many days before expiry the first reminder fires
+  ///
+  /// In en, this message translates to:
+  /// **'Days in advance'**
+  String get settingsRemindersLeadDays;
+
+  /// Display value of the lead-time selector
+  ///
+  /// In en, this message translates to:
+  /// **'{days, plural, =1{1 day} other{{days} days}}'**
+  String settingsLeadDaysValue(int days);
+
+  /// Text of the wallet banner suggesting to batch-clean coupons that expired over 30 days ago
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 coupon expired more than 30 days ago.} other{{count} coupons expired more than 30 days ago.}}'**
+  String cleanupPromptBody(int count);
+
+  /// Banner action that opens the batch cleanup confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Clean up'**
+  String get cleanupPromptAction;
+
+  /// Banner action that dismisses the cleanup suggestion for this session
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get cleanupPromptLater;
+
+  /// Title of the batch cleanup confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete expired coupons?'**
+  String get cleanupConfirmTitle;
+
+  /// Body of the batch cleanup confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 expired coupon will be removed from your wallet.} other{{count} expired coupons will be removed from your wallet.}}'**
+  String cleanupConfirmBody(int count);
 }
 
 class _AppLocalizationsDelegate
