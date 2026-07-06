@@ -217,4 +217,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String deleteConfirmBody(String name) {
     return '„$name“ wird aus deiner Kartensammlung entfernt.';
   }
+
+  @override
+  String get displayRotateTooltip => 'Anzeige drehen';
+
+  @override
+  String get displayDetailsTooltip => 'Kartendetails';
 }

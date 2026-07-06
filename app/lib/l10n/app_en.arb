@@ -289,5 +289,13 @@
         "example": "REWE"
       }
     }
+  },
+  "displayRotateTooltip": "Rotate display",
+  "@displayRotateTooltip": {
+    "description": "Tooltip of the card display page button that rotates the whole screen by 90° so 1D barcodes can use the long edge"
+  },
+  "displayDetailsTooltip": "Card details",
+  "@displayDetailsTooltip": {
+    "description": "Tooltip of the card display page button that opens the details sheet (note, expiry, edit, delete)"
   }
 }

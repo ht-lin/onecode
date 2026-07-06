@@ -21,4 +21,7 @@ abstract final class AppRoutes {
       }).toString();
 
   static String cardEdit(String id) => '/card/$id/edit';
+
+  /// 卡片展示页（M1-07，SPEC §3.4）：点卡面直达，收银台性能关键路径。
+  static String cardDisplay(String id) => '/card/$id';
 }

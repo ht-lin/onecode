@@ -217,4 +217,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String deleteConfirmBody(String name) {
     return '\"$name\" will be removed from your wallet.';
   }
+
+  @override
+  String get displayRotateTooltip => 'Rotate display';
+
+  @override
+  String get displayDetailsTooltip => 'Card details';
 }

@@ -5,6 +5,7 @@ import '../../data/drift/enums.dart';
 import '../../features/account/presentation/settings_page.dart';
 import '../../features/capture/presentation/image_capture_page.dart';
 import '../../features/capture/presentation/scan_page.dart';
+import '../../features/card_display/presentation/card_display_page.dart';
 import '../../features/card_editor/presentation/card_editor_page.dart';
 import '../../features/friends/presentation/friends_page.dart';
 import '../../features/wallet/presentation/wallet_page.dart';
@@ -43,6 +44,12 @@ GoRouter appRouter(Ref ref) => GoRouter(
           path: '/card/:id/edit',
           builder: (context, state) =>
               CardEditorPage(cardId: state.pathParameters['id']!),
+        ),
+        // 字面段 /card/new 优先于参数段匹配，不会被 :id 吞掉。
+        GoRoute(
+          path: '/card/:id',
+          builder: (context, state) =>
+              CardDisplayPage(cardId: state.pathParameters['id']!),
         ),
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) =>

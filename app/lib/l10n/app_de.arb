@@ -64,5 +64,7 @@
   "cardActionEdit": "Bearbeiten",
   "cardActionDelete": "Löschen",
   "deleteConfirmTitle": "Karte löschen?",
-  "deleteConfirmBody": "„{name}“ wird aus deiner Kartensammlung entfernt."
+  "deleteConfirmBody": "„{name}“ wird aus deiner Kartensammlung entfernt.",
+  "displayRotateTooltip": "Anzeige drehen",
+  "displayDetailsTooltip": "Kartendetails"
 }

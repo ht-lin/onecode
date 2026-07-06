@@ -122,7 +122,9 @@ class _WalletPageState extends ConsumerState<WalletPage> {
                     return WalletCardTile(
                       entry: entry,
                       expired: isCardExpired(entry.card, now),
-                      // 点卡面直达展示页在 M1-07 接入（SPEC §3.4）。
+                      // 点卡面直达展示页（SPEC §3.4）。
+                      onTap: () =>
+                          context.push(AppRoutes.cardDisplay(entry.card.id)),
                       onLongPress: () => _showCardActions(context, entry),
                     );
                   },

@@ -487,6 +487,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'\"{name}\" will be removed from your wallet.'**
   String deleteConfirmBody(String name);
+
+  /// Tooltip of the card display page button that rotates the whole screen by 90° so 1D barcodes can use the long edge
+  ///
+  /// In en, this message translates to:
+  /// **'Rotate display'**
+  String get displayRotateTooltip;
+
+  /// Tooltip of the card display page button that opens the details sheet (note, expiry, edit, delete)
+  ///
+  /// In en, this message translates to:
+  /// **'Card details'**
+  String get displayDetailsTooltip;
 }
 
 class _AppLocalizationsDelegate
