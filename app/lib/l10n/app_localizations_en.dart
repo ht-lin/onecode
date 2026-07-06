@@ -119,6 +119,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addMenuScan => 'Scan barcode';
 
   @override
+  String get addMenuGallery => 'Recognize from photo';
+
+  @override
   String get addMenuManual => 'Enter manually';
 
   @override
@@ -152,4 +155,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scanRescan => 'Scan again';
+
+  @override
+  String get imageCaptureTitle => 'Code from photo';
+
+  @override
+  String get imageNoCodeTitle => 'No code found';
+
+  @override
+  String get imageNoCodeBody =>
+      'No code was detected in this image. The code may be blurry, too small, cropped, or the image may be heavily compressed. Try a different image or enter the code manually.';
+
+  @override
+  String get imagePickAnother => 'Choose another image';
+
+  @override
+  String get imageEnterManually => 'Enter code manually';
+
+  @override
+  String get imageMultiHint =>
+      'Several codes were found. Select the one you want to save.';
 }

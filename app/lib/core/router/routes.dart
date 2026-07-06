@@ -7,6 +7,9 @@ abstract final class AppRoutes {
   /// 摄像头扫码录入页（M1-03），识别确认后替换为 [cardNew] 预填。
   static const scan = '/scan';
 
+  /// 相册图片识别录入页（M1-04），识别成功后替换为 [cardNew] 预填。
+  static const imageCapture = '/scan/image';
+
   /// 新建卡编辑页。扫码/相册/手动入口（M1-03/04/05）经查询参数预填：
   /// `?value=<码值>&format=<CodeFormat.wire>`。
   static const cardNew = '/card/new';

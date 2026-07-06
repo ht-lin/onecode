@@ -6,7 +6,7 @@ import '../../../l10n/app_localizations.dart';
 
 /// 卡包列表占位页（M1-06 实现列表与卡面）。
 ///
-/// "+" 菜单：扫码（默认，M1-03）/ 手动输入；M1-04 补相册识别（SPEC §3.1）。
+/// "+" 菜单：扫码（默认，M1-03）/ 相册识别（M1-04）/ 手动输入（SPEC §3.1）。
 class WalletPage extends StatelessWidget {
   const WalletPage({super.key});
 
@@ -38,6 +38,14 @@ class WalletPage extends StatelessWidget {
               onTap: () {
                 Navigator.of(sheetContext).pop();
                 context.push(AppRoutes.scan);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library_outlined),
+              title: Text(l10n.addMenuGallery),
+              onTap: () {
+                Navigator.of(sheetContext).pop();
+                context.push(AppRoutes.imageCapture);
               },
             ),
             ListTile(

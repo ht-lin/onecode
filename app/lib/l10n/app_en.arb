@@ -160,6 +160,10 @@
   "@addMenuScan": {
     "description": "Entry in the wallet '+' menu: open the camera scanner (default capture method)"
   },
+  "addMenuGallery": "Recognize from photo",
+  "@addMenuGallery": {
+    "description": "Entry in the wallet '+' menu: pick an image from the photo library and detect its barcode"
+  },
   "addMenuManual": "Enter manually",
   "@addMenuManual": {
     "description": "Entry in the wallet '+' menu: open the blank card editor for manual input"
@@ -203,5 +207,29 @@
   "scanRescan": "Scan again",
   "@scanRescan": {
     "description": "Dismiss button of the scan preview sheet; returns to the live viewfinder"
+  },
+  "imageCaptureTitle": "Code from photo",
+  "@imageCaptureTitle": {
+    "description": "App bar title of the photo library barcode recognition page"
+  },
+  "imageNoCodeTitle": "No code found",
+  "@imageNoCodeTitle": {
+    "description": "Title of the failure pane when no barcode was detected in the picked image"
+  },
+  "imageNoCodeBody": "No code was detected in this image. The code may be blurry, too small, cropped, or the image may be heavily compressed. Try a different image or enter the code manually.",
+  "@imageNoCodeBody": {
+    "description": "Failure pane body: likely causes plus the fallback suggestions (different image, manual input)"
+  },
+  "imagePickAnother": "Choose another image",
+  "@imagePickAnother": {
+    "description": "Button on the failure pane that reopens the system photo picker"
+  },
+  "imageEnterManually": "Enter code manually",
+  "@imageEnterManually": {
+    "description": "Fallback button on the failure pane that opens the blank card editor"
+  },
+  "imageMultiHint": "Several codes were found. Select the one you want to save.",
+  "@imageMultiHint": {
+    "description": "Hint above the candidate list when the picked image contains multiple barcodes"
   }
 }

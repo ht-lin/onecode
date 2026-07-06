@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../data/drift/enums.dart';
 import '../../features/account/presentation/settings_page.dart';
+import '../../features/capture/presentation/image_capture_page.dart';
 import '../../features/capture/presentation/scan_page.dart';
 import '../../features/card_editor/presentation/card_editor_page.dart';
 import '../../features/friends/presentation/friends_page.dart';
@@ -20,6 +21,10 @@ GoRouter appRouter(Ref ref) => GoRouter(
         GoRoute(
           path: AppRoutes.scan,
           builder: (context, state) => const ScanPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.imageCapture,
+          builder: (context, state) => const ImageCapturePage(),
         ),
         GoRoute(
           path: AppRoutes.cardNew,

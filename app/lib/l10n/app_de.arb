@@ -34,6 +34,7 @@
   "forceSaveBody": "Der Codewert entspricht nicht {format}. Du kannst ihn trotzdem speichern – manche Scanner lesen ihn eventuell nicht.",
   "forceSaveConfirm": "Trotzdem speichern",
   "addMenuScan": "Barcode scannen",
+  "addMenuGallery": "Aus Foto erkennen",
   "addMenuManual": "Manuell eingeben",
   "scanTitle": "Code scannen",
   "scanHint": "Code im Rahmen ausrichten",
@@ -44,5 +45,11 @@
   "scanOpenSettings": "Einstellungen öffnen",
   "scanResultTitle": "Code erkannt",
   "scanUseCode": "Code verwenden",
-  "scanRescan": "Erneut scannen"
+  "scanRescan": "Erneut scannen",
+  "imageCaptureTitle": "Code aus Foto",
+  "imageNoCodeTitle": "Kein Code gefunden",
+  "imageNoCodeBody": "In diesem Bild wurde kein Code erkannt. Möglicherweise ist der Code unscharf, zu klein, abgeschnitten oder das Bild ist zu stark komprimiert. Versuche ein anderes Bild oder gib den Code manuell ein.",
+  "imagePickAnother": "Anderes Bild auswählen",
+  "imageEnterManually": "Code manuell eingeben",
+  "imageMultiHint": "Mehrere Codes gefunden. Wähle den Code aus, den du speichern möchtest."
 }

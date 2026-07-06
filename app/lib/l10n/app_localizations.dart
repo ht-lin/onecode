@@ -302,6 +302,12 @@ abstract class AppLocalizations {
   /// **'Scan barcode'**
   String get addMenuScan;
 
+  /// Entry in the wallet '+' menu: pick an image from the photo library and detect its barcode
+  ///
+  /// In en, this message translates to:
+  /// **'Recognize from photo'**
+  String get addMenuGallery;
+
   /// Entry in the wallet '+' menu: open the blank card editor for manual input
   ///
   /// In en, this message translates to:
@@ -367,6 +373,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Scan again'**
   String get scanRescan;
+
+  /// App bar title of the photo library barcode recognition page
+  ///
+  /// In en, this message translates to:
+  /// **'Code from photo'**
+  String get imageCaptureTitle;
+
+  /// Title of the failure pane when no barcode was detected in the picked image
+  ///
+  /// In en, this message translates to:
+  /// **'No code found'**
+  String get imageNoCodeTitle;
+
+  /// Failure pane body: likely causes plus the fallback suggestions (different image, manual input)
+  ///
+  /// In en, this message translates to:
+  /// **'No code was detected in this image. The code may be blurry, too small, cropped, or the image may be heavily compressed. Try a different image or enter the code manually.'**
+  String get imageNoCodeBody;
+
+  /// Button on the failure pane that reopens the system photo picker
+  ///
+  /// In en, this message translates to:
+  /// **'Choose another image'**
+  String get imagePickAnother;
+
+  /// Fallback button on the failure pane that opens the blank card editor
+  ///
+  /// In en, this message translates to:
+  /// **'Enter code manually'**
+  String get imageEnterManually;
+
+  /// Hint above the candidate list when the picked image contains multiple barcodes
+  ///
+  /// In en, this message translates to:
+  /// **'Several codes were found. Select the one you want to save.'**
+  String get imageMultiHint;
 }
 
 class _AppLocalizationsDelegate
