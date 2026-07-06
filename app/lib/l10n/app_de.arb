@@ -51,5 +51,18 @@
   "imageNoCodeBody": "In diesem Bild wurde kein Code erkannt. Möglicherweise ist der Code unscharf, zu klein, abgeschnitten oder das Bild ist zu stark komprimiert. Versuche ein anderes Bild oder gib den Code manuell ein.",
   "imagePickAnother": "Anderes Bild auswählen",
   "imageEnterManually": "Code manuell eingeben",
-  "imageMultiHint": "Mehrere Codes gefunden. Wähle den Code aus, den du speichern möchtest."
+  "imageMultiHint": "Mehrere Codes gefunden. Wähle den Code aus, den du speichern möchtest.",
+  "searchHint": "Nach Name oder Notiz suchen",
+  "filterAll": "Alle",
+  "filterExpired": "Abgelaufen",
+  "noMatchingCards": "Keine passenden Karten",
+  "emptyWalletTitle": "Noch keine Karten",
+  "emptyWalletBody": "Füge deine erste Karte hinzu – scanne sie, erkenne sie aus einem Foto oder gib sie manuell ein.",
+  "emptyWalletAction": "Erste Karte hinzufügen",
+  "cardActionFavorite": "Zu Favoriten hinzufügen",
+  "cardActionUnfavorite": "Aus Favoriten entfernen",
+  "cardActionEdit": "Bearbeiten",
+  "cardActionDelete": "Löschen",
+  "deleteConfirmTitle": "Karte löschen?",
+  "deleteConfirmBody": "„{name}“ wird aus deiner Kartensammlung entfernt."
 }

@@ -409,6 +409,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Several codes were found. Select the one you want to save.'**
   String get imageMultiHint;
+
+  /// Placeholder of the wallet search field; matches card names and notes
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name or note'**
+  String get searchHint;
+
+  /// Wallet filter chip: show all cards (loyalty card and coupon chips reuse the card type labels)
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// Wallet filter chip for expired coupons; also the badge text on an expired card face
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get filterExpired;
+
+  /// Shown instead of the card grid when search/filter yields no results
+  ///
+  /// In en, this message translates to:
+  /// **'No matching cards'**
+  String get noMatchingCards;
+
+  /// Title of the first-use empty state on the wallet page
+  ///
+  /// In en, this message translates to:
+  /// **'No cards yet'**
+  String get emptyWalletTitle;
+
+  /// Body of the first-use empty state; names the three capture methods
+  ///
+  /// In en, this message translates to:
+  /// **'Add your first card — scan it, recognize it from a photo, or enter it manually.'**
+  String get emptyWalletBody;
+
+  /// Button on the empty state that opens the '+' capture menu
+  ///
+  /// In en, this message translates to:
+  /// **'Add first card'**
+  String get emptyWalletAction;
+
+  /// Long-press card action: pin the card to the top of the wallet
+  ///
+  /// In en, this message translates to:
+  /// **'Add to favorites'**
+  String get cardActionFavorite;
+
+  /// Long-press card action: unpin a favorited card
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from favorites'**
+  String get cardActionUnfavorite;
+
+  /// Long-press card action: open the card editor
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get cardActionEdit;
+
+  /// Long-press card action and confirm button of the delete dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get cardActionDelete;
+
+  /// Title of the delete confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Delete card?'**
+  String get deleteConfirmTitle;
+
+  /// Body of the delete confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'\"{name}\" will be removed from your wallet.'**
+  String deleteConfirmBody(String name);
 }
 
 class _AppLocalizationsDelegate

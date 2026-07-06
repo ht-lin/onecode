@@ -231,5 +231,63 @@
   "imageMultiHint": "Several codes were found. Select the one you want to save.",
   "@imageMultiHint": {
     "description": "Hint above the candidate list when the picked image contains multiple barcodes"
+  },
+  "searchHint": "Search by name or note",
+  "@searchHint": {
+    "description": "Placeholder of the wallet search field; matches card names and notes"
+  },
+  "filterAll": "All",
+  "@filterAll": {
+    "description": "Wallet filter chip: show all cards (loyalty card and coupon chips reuse the card type labels)"
+  },
+  "filterExpired": "Expired",
+  "@filterExpired": {
+    "description": "Wallet filter chip for expired coupons; also the badge text on an expired card face"
+  },
+  "noMatchingCards": "No matching cards",
+  "@noMatchingCards": {
+    "description": "Shown instead of the card grid when search/filter yields no results"
+  },
+  "emptyWalletTitle": "No cards yet",
+  "@emptyWalletTitle": {
+    "description": "Title of the first-use empty state on the wallet page"
+  },
+  "emptyWalletBody": "Add your first card — scan it, recognize it from a photo, or enter it manually.",
+  "@emptyWalletBody": {
+    "description": "Body of the first-use empty state; names the three capture methods"
+  },
+  "emptyWalletAction": "Add first card",
+  "@emptyWalletAction": {
+    "description": "Button on the empty state that opens the '+' capture menu"
+  },
+  "cardActionFavorite": "Add to favorites",
+  "@cardActionFavorite": {
+    "description": "Long-press card action: pin the card to the top of the wallet"
+  },
+  "cardActionUnfavorite": "Remove from favorites",
+  "@cardActionUnfavorite": {
+    "description": "Long-press card action: unpin a favorited card"
+  },
+  "cardActionEdit": "Edit",
+  "@cardActionEdit": {
+    "description": "Long-press card action: open the card editor"
+  },
+  "cardActionDelete": "Delete",
+  "@cardActionDelete": {
+    "description": "Long-press card action and confirm button of the delete dialog"
+  },
+  "deleteConfirmTitle": "Delete card?",
+  "@deleteConfirmTitle": {
+    "description": "Title of the delete confirmation dialog"
+  },
+  "deleteConfirmBody": "\"{name}\" will be removed from your wallet.",
+  "@deleteConfirmBody": {
+    "description": "Body of the delete confirmation dialog",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "REWE"
+      }
+    }
   }
 }

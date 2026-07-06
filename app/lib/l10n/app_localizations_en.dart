@@ -175,4 +175,46 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get imageMultiHint =>
       'Several codes were found. Select the one you want to save.';
+
+  @override
+  String get searchHint => 'Search by name or note';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterExpired => 'Expired';
+
+  @override
+  String get noMatchingCards => 'No matching cards';
+
+  @override
+  String get emptyWalletTitle => 'No cards yet';
+
+  @override
+  String get emptyWalletBody =>
+      'Add your first card — scan it, recognize it from a photo, or enter it manually.';
+
+  @override
+  String get emptyWalletAction => 'Add first card';
+
+  @override
+  String get cardActionFavorite => 'Add to favorites';
+
+  @override
+  String get cardActionUnfavorite => 'Remove from favorites';
+
+  @override
+  String get cardActionEdit => 'Edit';
+
+  @override
+  String get cardActionDelete => 'Delete';
+
+  @override
+  String get deleteConfirmTitle => 'Delete card?';
+
+  @override
+  String deleteConfirmBody(String name) {
+    return '\"$name\" will be removed from your wallet.';
+  }
 }

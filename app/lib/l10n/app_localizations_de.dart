@@ -175,4 +175,46 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get imageMultiHint =>
       'Mehrere Codes gefunden. Wähle den Code aus, den du speichern möchtest.';
+
+  @override
+  String get searchHint => 'Nach Name oder Notiz suchen';
+
+  @override
+  String get filterAll => 'Alle';
+
+  @override
+  String get filterExpired => 'Abgelaufen';
+
+  @override
+  String get noMatchingCards => 'Keine passenden Karten';
+
+  @override
+  String get emptyWalletTitle => 'Noch keine Karten';
+
+  @override
+  String get emptyWalletBody =>
+      'Füge deine erste Karte hinzu – scanne sie, erkenne sie aus einem Foto oder gib sie manuell ein.';
+
+  @override
+  String get emptyWalletAction => 'Erste Karte hinzufügen';
+
+  @override
+  String get cardActionFavorite => 'Zu Favoriten hinzufügen';
+
+  @override
+  String get cardActionUnfavorite => 'Aus Favoriten entfernen';
+
+  @override
+  String get cardActionEdit => 'Bearbeiten';
+
+  @override
+  String get cardActionDelete => 'Löschen';
+
+  @override
+  String get deleteConfirmTitle => 'Karte löschen?';
+
+  @override
+  String deleteConfirmBody(String name) {
+    return '„$name“ wird aus deiner Kartensammlung entfernt.';
+  }
 }
