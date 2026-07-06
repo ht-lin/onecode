@@ -1,3 +1,4 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -42,7 +43,7 @@ void main() {
         ),
       ),
     );
-    router.push(location);
+    if (location != AppRoutes.wallet) router.push(location);
     await tester.pumpAndSettle();
   }
 
@@ -56,14 +57,70 @@ void main() {
   }
 
   Future<void> selectFormat(WidgetTester tester, String label) async {
-    await tester.tap(find.text('Code 128'));
+    await tester.tap(find.byType(DropdownButtonFormField<CodeFormat>));
     await tester.pumpAndSettle();
     await tester.tap(find.text(label).last);
     await tester.pumpAndSettle();
   }
 
+  /// 码值输入框当前的键盘类型。
+  TextInputType? codeKeyboard(WidgetTester tester) => tester
+      .widget<TextField>(find.descendant(
+        of: find.widgetWithText(TextFormField, 'Code value'),
+        matching: find.byType(TextField),
+      ))
+      .keyboardType;
+
   Future<List<CardRow>> allCards() =>
       (db.select(db.cards)).get();
+
+  group('手动输入（M1-05）', () {
+    testWidgets('"+" 菜单第三项进入空白编辑页，码制默认 Code 128', (tester) async {
+      await pumpApp(tester, AppRoutes.wallet);
+
+      await tester.tap(find.byType(FloatingActionButton));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Enter manually'));
+      await tester.pumpAndSettle();
+
+      // "Add card" 同时是 AppBar 标题与预览占位名，限定在 AppBar 内断言。
+      expect(
+        find.descendant(
+            of: find.byType(AppBar), matching: find.text('Add card')),
+        findsOneWidget,
+      );
+      expect(find.text('Code 128'), findsOneWidget);
+      // 空白态：码值未预填。
+      final codeField = tester.widget<TextFormField>(
+          find.widgetWithText(TextFormField, 'Code value'));
+      expect(codeField.controller!.text, isEmpty);
+    });
+
+    testWidgets('键盘类型随码制切换：纯数字码制用数字键盘', (tester) async {
+      await pumpApp(tester, AppRoutes.cardNew);
+
+      // 默认 Code 128（任意 ASCII）→ 文本键盘。
+      expect(codeKeyboard(tester), TextInputType.text);
+
+      // 全部 13 种码制的映射由 code_format_ui_test 单元覆盖，
+      // 此处验证 UI 切换往返生效。
+      await selectFormat(tester, 'EAN-13');
+      expect(codeKeyboard(tester), TextInputType.number);
+
+      await selectFormat(tester, 'QR Code');
+      expect(codeKeyboard(tester), TextInputType.text);
+    });
+
+    testWidgets('输入即渲染实时预览', (tester) async {
+      await pumpApp(tester, AppRoutes.cardNew);
+
+      // 空白态预览无码图形。
+      expect(find.byType(BarcodeWidget), findsNothing);
+
+      await enterByLabel(tester, 'Code value', '4006381333931');
+      expect(find.byType(BarcodeWidget), findsOneWidget);
+    });
+  });
 
   group('新建', () {
     testWidgets('必填校验：名称与码值为空时不入库', (tester) async {

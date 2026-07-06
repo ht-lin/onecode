@@ -144,6 +144,10 @@ class _EditorFormState extends ConsumerState<_EditorForm> {
             const SizedBox(height: 16),
             TextFormField(
               controller: _codeValue,
+              // 键盘随码制切换：纯数字码制用数字键盘（SPEC §3.1）。
+              keyboardType: _format.isNumericOnly
+                  ? TextInputType.number
+                  : TextInputType.text,
               decoration: InputDecoration(
                 labelText: l10n.fieldCodeValue,
                 // 非法不设 errorText（不阻止保存），用 helper 样式警示。

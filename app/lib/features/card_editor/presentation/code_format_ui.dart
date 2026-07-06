@@ -23,6 +23,19 @@ extension CodeFormatUi on CodeFormat {
         CodeFormat.codabar => 'Codabar',
       };
 
+  /// 字符集是否为纯数字（决定手动录入键盘类型，SPEC §3.1）。
+  ///
+  /// Codabar 数据字符含 `- $ : / . +` 与起止符 A–D，不算纯数字。
+  bool get isNumericOnly => switch (this) {
+        CodeFormat.ean13 ||
+        CodeFormat.ean8 ||
+        CodeFormat.upcA ||
+        CodeFormat.upcE ||
+        CodeFormat.itf =>
+          true,
+        _ => false,
+      };
+
   /// 是否为二维码制（决定预览宽高比与展示页拉伸策略）。
   bool get is2d => switch (this) {
         CodeFormat.qrCode ||
