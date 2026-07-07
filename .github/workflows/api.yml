@@ -29,6 +29,7 @@ jobs:
           filters: |
             api:
               - 'api/**'
+              - 'infra/**'
               - '.github/workflows/api.yml'
 
   quality:
@@ -122,7 +123,62 @@ jobs:
           context: api
           target: frankenphp_prod
           push: true
+          build-args: |
+            APP_VERSION=${{ github.sha }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha,scope=api
           cache-to: type=gha,scope=api,mode=max
+
+  deploy:
+    name: API Deploy
+    needs: [changes, docker]
+    # vars.API_DOMAIN 未配置（服务器尚未置备）时整个 job 跳过，不阻塞 main
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.changes.outputs.api == 'true' && vars.API_DOMAIN != ''
+    runs-on: ubuntu-latest
+    # 部署串行化，且不中途取消（避免服务器上留下半成品状态）
+    concurrency:
+      group: api-deploy
+      cancel-in-progress: false
+    environment:
+      name: production
+      url: https://${{ vars.API_DOMAIN }}
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Sync deploy files
+        run: |
+          scp -p infra/compose.yaml infra/deploy.sh \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/srv/onecode/"
+
+      # GHCR 拉取用一次性的 GITHUB_TOKEN，服务器不留长期 registry 凭据
+      - name: Deploy
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | ssh \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
+            /srv/onecode/deploy.sh "sha-${{ github.sha }}" "${{ github.actor }}"
+
+      - name: Smoke test /healthz
+        run: |
+          expected="${{ github.sha }}"
+          for i in $(seq 1 10); do
+            version=$(curl -fsS --max-time 10 "https://${{ vars.API_DOMAIN }}/healthz" | jq -r '.version' || true)
+            if [ "$version" = "$expected" ]; then
+              echo "healthz OK, version=$version"
+              exit 0
+            fi
+            echo "attempt $i: version='$version', expected='$expected'"
+            sleep 15
+          done
+          echo "smoke test failed: new version never became healthy" >&2
+          exit 1

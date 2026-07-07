@@ -8,6 +8,7 @@
 onecode/
   app/            # Flutter 客户端（iOS / Android）
   api/            # Symfony 后端（API Platform + PostgreSQL）
+  infra/          # 生产部署：VPS 置备、Compose 栈、CD 运维手册
   SPEC.md         # 权威技术规格书（规格有变先改这里）
   .claude/tasks/  # 任务拆分与进度追踪
 ```
@@ -27,7 +28,7 @@ flutter run   # 需要模拟器/真机
 
 ```bash
 cd api && docker compose up -d --wait
-curl -k https://localhost/healthz   # → {"status":"ok"}
+curl -k https://localhost/healthz   # → {"status":"ok","version":"dev"}
 ```
 
 详见 [api/README.md](api/README.md)。
@@ -35,4 +36,5 @@ curl -k https://localhost/healthz   # → {"status":"ok"}
 ## 文档入口
 
 - [SPEC.md](SPEC.md) — 技术规格书（产品定位、数据模型、同步协议、部署运维）
+- [infra/README.md](infra/README.md) — 生产环境运维手册（置备、部署、secrets 轮换）
 - [.claude/tasks/README.md](.claude/tasks/README.md) — 任务索引与使用约定（M0–M4 里程碑）

@@ -16,12 +16,15 @@ final class HealthzController
     #[Route('/healthz', name: 'healthz', methods: ['GET'])]
     public function __invoke(Connection $connection): JsonResponse
     {
+        // Baked into the image by CI (git SHA) so deploys can verify the running version
+        $version = getenv('APP_VERSION') ?: 'dev';
+
         try {
             $connection->executeQuery('SELECT 1')->fetchOne();
         } catch (\Throwable) {
-            return new JsonResponse(['status' => 'error'], JsonResponse::HTTP_SERVICE_UNAVAILABLE);
+            return new JsonResponse(['status' => 'error', 'version' => $version], JsonResponse::HTTP_SERVICE_UNAVAILABLE);
         }
 
-        return new JsonResponse(['status' => 'ok']);
+        return new JsonResponse(['status' => 'ok', 'version' => $version]);
     }
 }

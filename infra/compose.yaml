@@ -1,0 +1,79 @@
+---
+# 生产 VPS 上的 Compose 栈（SPEC §10.1）。部署位置：/srv/onecode/compose.yaml，
+# 由 .github/workflows/api.yml 的 deploy job 在每次发布时同步并执行。
+# 插值变量来自 /srv/onecode/.env（永不入库，模板见 infra/.env.example）。
+services:
+  app:
+    image: ghcr.io/ht-lin/onecode/api:${API_IMAGE_TAG:-latest}
+    restart: unless-stopped
+    environment:
+      # 真实域名触发 Caddy 自动申请 Let's Encrypt 证书
+      SERVER_NAME: ${SERVER_NAME:?}
+      DEFAULT_URI: https://${SERVER_NAME:?}
+      APP_SECRET: ${APP_SECRET:?}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:?}@db:5432/${POSTGRES_DB:-app}?serverVersion=16&charset=utf8
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+      - target: 443
+        published: 443
+        protocol: tcp
+      - target: 443
+        published: 443
+        protocol: udp
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+  worker:
+    image: ghcr.io/ht-lin/onecode/api:${API_IMAGE_TAG:-latest}
+    restart: unless-stopped
+    command: php bin/console messenger:consume async --time-limit=3600
+    environment:
+      APP_SECRET: ${APP_SECRET:?}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:?}@db:5432/${POSTGRES_DB:-app}?serverVersion=16&charset=utf8
+    depends_on:
+      db:
+        condition: service_healthy
+      # app 的 entrypoint 负责跑 Doctrine migrations；等它健康后再启动，
+      # 避免两个容器同时执行 migrate 相互竞争
+      app:
+        condition: service_healthy
+    healthcheck:
+      # 基础镜像的 healthcheck 探测 Caddy，本服务是纯 CLI 消费者，不适用
+      disable: true
+
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  # 占位（SPEC §10.2），M2-09 实现：每日 pg_dump + restic 加密推送 Hetzner Storage Box。
+  # 挂在 backup profile 下，默认 `compose up -d` 不会启动它。
+  backup:
+    image: postgres:16
+    profiles: [backup]
+    command: ["true"]
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  caddy_data:
+  caddy_config:
+  db_data:

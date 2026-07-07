@@ -1,0 +1,68 @@
+#cloud-config
+# Hetzner Cloud 创建服务器时贴入 User data（或 hcloud server create --user-data-from-file）。
+# 完成：deploy 用户、SSH 仅密钥、ufw(22/80/443)、fail2ban、自动安全更新、Docker、/srv/onecode。
+# LUKS 全盘加密无法由 cloud-init 完成，见 infra/README.md「磁盘加密」。
+
+users:
+  - name: deploy
+    groups: [docker]
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      # TODO: 替换为你的公钥
+      - ssh-ed25519 AAAA... replace-me
+
+package_update: true
+package_upgrade: true
+packages:
+  - ca-certificates
+  - curl
+  - fail2ban
+  - ufw
+  - unattended-upgrades
+
+write_files:
+  # SSH 加固：禁密码、禁 root 口令登录（drop-in 优先于主配置）
+  - path: /etc/ssh/sshd_config.d/99-hardening.conf
+    content: |
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+      PermitRootLogin prohibit-password
+      X11Forwarding no
+  # fail2ban 保 SSH（SPEC §9.1）
+  - path: /etc/fail2ban/jail.local
+    content: |
+      [sshd]
+      enabled = true
+      maxretry = 5
+      bantime = 1h
+  # 自动安全更新 + 定期清理
+  - path: /etc/apt/apt.conf.d/20auto-upgrades
+    content: |
+      APT::Periodic::Update-Package-Lists "1";
+      APT::Periodic::Unattended-Upgrade "1";
+      APT::Periodic::AutocleanInterval "7";
+
+runcmd:
+  # Docker 官方 apt 源 + engine/compose 插件
+  - install -m 0755 -d /etc/apt/keyrings
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  - chmod a+r /etc/apt/keyrings/docker.asc
+  - >
+    sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc]
+    https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) stable"
+    > /etc/apt/sources.list.d/docker.list'
+  - apt-get update
+  - apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  - systemctl enable --now docker
+  # 防火墙：仅 22/80/443（SPEC §9.1）；443/udp 供 HTTP/3
+  - ufw default deny incoming
+  - ufw default allow outgoing
+  - ufw allow 22/tcp
+  - ufw allow 80/tcp
+  - ufw allow 443/tcp
+  - ufw allow 443/udp
+  - ufw --force enable
+  # 部署目录，deploy 用户可写
+  - install -d -o deploy -g deploy /srv/onecode
+  - systemctl restart ssh fail2ban

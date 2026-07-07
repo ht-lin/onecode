@@ -16,6 +16,6 @@ final class HealthzTest extends ApiTestCase
         static::createClient()->request('GET', '/healthz');
 
         self::assertResponseIsSuccessful();
-        self::assertJsonContains(['status' => 'ok']);
+        self::assertJsonContains(['status' => 'ok', 'version' => 'dev']);
     }
 }

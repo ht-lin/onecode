@@ -121,6 +121,9 @@ FROM debian:13-slim AS frankenphp_prod
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 
 ENV APP_ENV=prod
+# Git SHA of the build, exposed by /healthz so deploys can verify the running version
+ARG APP_VERSION=dev
+ENV APP_VERSION=$APP_VERSION
 ENV PHP_INI_SCAN_DIR=":/usr/local/etc/php/app.conf.d"
 
 COPY --from=frankenphp_prod_builder /usr/local/bin/frankenphp /usr/local/bin/frankenphp
