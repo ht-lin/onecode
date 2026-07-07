@@ -8,6 +8,15 @@ doctrine:
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
+
+        types:
+            citext: App\Doctrine\CitextType
+            timestamptz: App\Doctrine\TimestamptzType
+        # Map introspected PostgreSQL column types back to our custom DBAL
+        # types so doctrine:migrations:diff does not report phantom changes.
+        mapping_types:
+            citext: citext
+            timestamptz: timestamptz
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
